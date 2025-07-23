@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CyberWatch Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f3f4f6; }
+        .container { max-width: 700px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; }
+        h1 { color: #4a4a4a; }
+        .vuln { border-bottom: 1px solid #ddd; margin-bottom: 10px; padding-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, {{ business.name }}</h1>
+        <p>Industry: {{ business.industry }}</p>
+        <p>Company Size: {{ business.size }}</p>
+        <p>Risk Score: {{ your_risk_score }}</p>
+        <h2>Top Threats from CISA</h2>
+        {% for vuln in vulnerabilities %}
+            <div class="vuln">
+                <strong>{{ vuln.cveID }}</strong> - {{ vuln.vulnerabilityName }}<br>
+                <small>{{ vuln.shortDescription }}</small>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
